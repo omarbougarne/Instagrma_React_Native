@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128024345519",
+    "project_id": "instagram-4fd04",
+    "storage_bucket": "instagram-4fd04.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128024345519:android:d2e799accf5dd09b8b8d5a",
+        "android_client_info": {
+          "package_name": "com.wa2goose.walkheroyt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD9X8Hruf6V5nczlQkCKn2Lkygv-AurPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
