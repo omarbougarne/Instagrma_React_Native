@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import { auth, database } from "../../FirebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { ref, set } from "firebase/database";
+import auth from "@react-native-firebase/auth";
+import db from "@react-native-firebase/database";
 
 function RegisterForm() {
     const [email, setEmail] = useState('');
@@ -10,9 +9,9 @@ function RegisterForm() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const createProfile = async (user) => {
-        await set(ref(database, 'users/' + user.uid), {
-            email: user.email,
+    const createProfile = async (response) => {
+        await db().ref(`/users/${response.user.uid}`).set({
+            email: response.user.email,
             createdAt: new Date().toISOString()
         });
     };
@@ -31,9 +30,9 @@ function RegisterForm() {
         setLoading(true);
 
         try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
+            const response = await auth().createUserWithEmailAndPassword(email, password);
             if (response.user) {
-                await createProfile(response.user);
+                await createProfile(response);
                 Alert.alert("Registration successful");
             }
         } catch (e) {
